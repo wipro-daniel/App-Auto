@@ -1,0 +1,28 @@
+{
+  "name": "autoapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nodePySh.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wipro-daniel/autoApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wipro-daniel/autoApp/issues"
+  },
+  "homepage": "https://github.com/wipro-daniel/autoApp#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "g": "^2.0.1",
+    "python": "0.0.4",
+    "python-shell": "^0.5.0"
+  }
+}

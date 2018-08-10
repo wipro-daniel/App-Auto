@@ -1,0 +1,47 @@
+.sidenav-container {
+  flex: 1;
+  width: 100%;
+  min-width: 100%;
+
+  min-height: 100%;
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+
+  flex-direction: column;
+}
+
+.mat-form-field {
+   font-size: 14px;
+  width: 50%;
+  font-family:'Lucida Sans Unicode';
+  display: block;
+  }
+  
+  .search-box {
+    margin:16px;
+    top:48px;
+          }
+
+  .suggestion-title {
+    align-content: left;
+    align-items: left;
+    display: flex;
+    padding: 8px 20px;
+    /* color: rgba(0, 0, 0, 0.54); */
+    background: rgba(0,0,0,.03);
+    font-size: 16px;
+    font-weight: bold;
+    font-family:'Lucida Sans Unicode';
+  }
+
+  .btn {
+    font:1rem 'Fira Sans',sans-serif;
+    padding: .5rem;
+    background:#86d1f0;
+    border:none;
+    border-radius: 4px;
+    margin: 4px;
+  }

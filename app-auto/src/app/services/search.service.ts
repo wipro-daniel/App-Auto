@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SearchService {
+
+  private searchUrl = 'http://localhost:5000/';
+
+  private _result: BehaviorSubject<any[]>;
+
+  private dataStore: {
+    searchResult: any[]
+  };
+
+  constructor(private _http: HttpClient) {
+    this.dataStore = { searchResult: [] };
+    this._result = new BehaviorSubject<any[]>([]);
+  }
+  get searchResult(): Observable<any[]> {
+    return this._result.asObservable();
+  }
+
+  getSearchResults(searchString: string) {
+    this._result = new BehaviorSubject<any[]>([]);
+
+    return this._http.get(this.searchUrl + searchString)
+      .subscribe(data => {
+        this.dataStore.searchResult = <any[]>data;
+        this._result.next(Object.assign({}, this.dataStore).searchResult);
+      }, error => {
+    //pra    console.log('Failed to fetch results');
+    console.log(error);
+      });
+  }
+}

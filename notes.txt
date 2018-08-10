@@ -1,0 +1,35 @@
+set http_proxy=http://srv_wipro_automation:Wi_2017!_pro@proxy.rwe.com:80/
+set https_proxy=http://srv_wipro_automation:Wi_2017!_pro@proxy.rwe.com:80/
+set https_proxy=http://proxy.rwe.com:80/
+
+
+set http_proxy=http://srv_wipro_automation:Wi_2017\!_pro@proxy.rwe.com:8080
+
+
+
+
+Application: "BILLIT", "Health Check ": "Check if PDSM0047 completed", Result: "Not Completed", …
+
+
+
+
+
+i have an amendment ticket	
+
+
+
+applications that passed health check
+
+apllications that failed health check
+
+systems that failed health check
+
+systems that are red
+
+
+
+ticket did not returned results.? add next time. (Machine Learning)
+
+put all ticket under one category.
+
+end to end demo.
