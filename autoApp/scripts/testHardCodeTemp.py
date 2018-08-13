@@ -1,5 +1,6 @@
 import json
 from scripts.utils import excelUtil, formatExcel
+import os
 outputJson = {
     "billit":{"Text": "BILLIT selected",
               "Options":
@@ -51,8 +52,14 @@ outputJson = {
 
 
 
+
 # Input is lower case string
 def deleteASAP(input):
+    full_path = os.path.realpath(__file__)
+    path = (os.path.dirname(os.path.dirname(full_path)))
+    folder = "data"
+    file = "HealthCheckDemo.xlsx"
+    print(os.path.join(path, folder, file))
     amendment = ["amendment", "mendment", "amend ment"]
     BILLIT =['billit', 'bill it', 'billlit']
     SPRITE = ["sprite"]
