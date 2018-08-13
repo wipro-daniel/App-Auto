@@ -1,6 +1,6 @@
 import sys
 import scripts.nlp.findKeywords
-import scripts.hardCodeTemp
+import scripts.testHardCodeTemp
 
 def processInput():
     test = False
@@ -24,7 +24,7 @@ def processInput():
         # Convert to lowercase - NLP does not process capital letters
         
         if hardCode:
-            print (scripts.hardCodeTemp.deleteASAP(lines))
+            print (scripts.testHardCodeTemp.deleteASAP(lines))
         else:
             json = scripts.nlp.findKeywords.processStatement(lines)
             print (json)
