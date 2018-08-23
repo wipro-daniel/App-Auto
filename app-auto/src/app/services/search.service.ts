@@ -26,7 +26,10 @@ export class SearchService {
   getSearchResults(searchString: string) {
     this._result = new BehaviorSubject<any[]>([]);
 
+     //  console.log(this.searchUrl+searchString);
+
     return this._http.get(this.searchUrl + searchString)
+
       .subscribe(data => {
         this.dataStore.searchResult = <any[]>data;
         this._result.next(Object.assign({}, this.dataStore).searchResult);

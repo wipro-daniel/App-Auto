@@ -63,7 +63,7 @@ export class SearchBox {
         this.ticketString = <any>this.fullResults;
         //this.ticketString=this.fullResults;
         //checking the string whether this is for HC or ticket
-
+        console.log(this.fullResults);
         if (this.fullResults.length > 0) {
           this.filterSearch();
         }
@@ -128,7 +128,7 @@ export class SearchBox {
         return;
       }
 
-      //console.log(this.fullResults);
+      console.log(this.fullResults);
 
       this.searchResults = this.fullResults[0]['BILLIT'];
       this.headerKeys = this.buildHeaderKeys(this.searchResults);

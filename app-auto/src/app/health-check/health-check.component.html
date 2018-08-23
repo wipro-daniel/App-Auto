@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-title>Health Check Details Entry Form</mat-card-title>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" appearance="outline" placeholder="Enter Application Name" name="appName" ngModel required #appName="ngModel">
+      <mat-error *ngIf="appName.invalid">
+        Please enter Application Name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput type="text" appearance="outline" placeholder="Enter HC Paramater" name="hcParam" ngModel required #hcParam="ngModel">
+      <mat-error *ngIf="hcParam.invalid">
+        Please enter Health Check Parameter
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <textarea matInput rows="2" appearance="outline" placeholder="Enter HC description" name="hcDesc" ngModel required #hcDesc="ngModel">
+          </textarea>
+      <mat-error *ngIf="hcDesc.invalid">
+        Please enter HC description
+      </mat-error>
+      <!-- <mat-error *ngIf="postForm.getControl('content').invalid">Please enter a post title
+                  </mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput type="text" placeholder="Enter HC Status" name="hcStatus" ngModel required #hcStatus="ngModel">
+      <mat-error *ngIf="hcStatus.invalid">
+        Please enter Health Check Status
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="Submit">Save Post</button>
+  </form>
+</mat-card>

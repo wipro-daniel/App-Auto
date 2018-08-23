@@ -7,7 +7,8 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatTableModule
+  MatTableModule,
+  MatCardModule,MatButtonModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs'
@@ -15,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { AppComponent } from './app.component';
 import { SearchHeaderComponent } from './header/search-header.component';
 import { SearchBox } from './search-box/search-box.component';
+import { HealthCheckComponent } from './health-check/health-check.component';
 
 const routes: Routes = [
   { path: 'search-engine', loadChildren: './search-box/search-box.module#SearchEngineModule' },
@@ -25,8 +27,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SearchHeaderComponent,
-    SearchBox
-  ],
+    SearchBox,
+    HealthCheckComponent
+      ],
 
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ const routes: Routes = [
     MatTableModule,
     // MatRadioChange,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

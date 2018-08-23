@@ -4,7 +4,8 @@ import scripts.hardCodeTemp
 
 def processInput():
     test = False
-    hardCode = True
+    #hardCode = True
+    hardCode = False
     lines = ''
     
     # Wait for data to be sent from node module (Which should be taken from angular)
