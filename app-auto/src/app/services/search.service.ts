@@ -19,15 +19,20 @@ export class SearchService {
     this.dataStore = { searchResult: [] };
     this._result = new BehaviorSubject<any[]>([]);
   }
+
+ 
   get searchResult(): Observable<any[]> {
+    return this._result.asObservable();
+  }
+
+  get postHcDataObs(): Observable<any[]> {
     return this._result.asObservable();
   }
 
   getSearchResults(searchString: string) {
     this._result = new BehaviorSubject<any[]>([]);
 
-     //  console.log(this.searchUrl+searchString);
-
+     //console.log(this.searchUrl+searchString);
     return this._http.get(this.searchUrl + searchString)
 
       .subscribe(data => {
@@ -37,5 +42,32 @@ export class SearchService {
     //pra    console.log('Failed to fetch results');
     console.log(error);
       });
+  }
+
+  postHcData(appName: string,hcParam:string,hcDesc:string,hcStat:string) {
+    const uri='dbUpdate';
+      // this._result = new BehaviorSubject<any[]>([]);
+     //  console.log(this.searchUrl+searchString);
+     const obj={
+      appName:appName,
+      hcParam:hcParam,
+      hcDesc:hcDesc,
+      hcStat:hcStat
+     }
+     console.log(obj);
+      this._http.post(this.searchUrl+uri,obj)
+         .subscribe(res=>console.log(res),
+        error=>{
+          console.log(error);
+        }); 
+
+                
+              /*        .subscribe(data => {
+        this.dataStore.searchResult = <any[]>data;
+        this._result.next(Object.assign({}, this.dataStore).searchResult); 
+        }, error => {
+    //pra    console.log('Failed to fetch results');
+    console.log(error);
+      }) ;*/
   }
 }

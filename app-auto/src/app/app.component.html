@@ -1,5 +1,6 @@
 <search-header></search-header>
 <main>
     <search-box></search-box>
-    <app-health-check></app-health-check>
-</main>
+    <button mat-raised-button color="primary" (click)="isOn=true">Enter HC Details</button>
+    <app-health-check [hidden]="!isOn"></app-health-check>
+    </main>

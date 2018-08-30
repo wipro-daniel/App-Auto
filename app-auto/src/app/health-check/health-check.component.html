@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-title>Health Check Details Entry Form</mat-card-title>
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm" onload="disable">
     <mat-form-field appearance="outline">
       <input matInput type="text" appearance="outline" placeholder="Enter Application Name" name="appName" ngModel required #appName="ngModel">
       <mat-error *ngIf="appName.invalid">
