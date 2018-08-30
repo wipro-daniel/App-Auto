@@ -1,5 +1,5 @@
 import json
-from scripts.utils import excelUtil, formatExcel
+from scripts.utils import excelUtil, formatExcel,mongoConn
 from scripts.nlp import processSentences
 
 outputJson = {
@@ -48,10 +48,8 @@ outputJson = {
               ]
          },
     "contract":
-        {"Text": "It looks like you've searched for a SPRITE contract status change. NOTE:"
-                 " CTRS_CODE status (open/sent) first letter should be in CAPITAL",
-         "Enter code": "TEXT BOX",
-         "Enter CTRS_CODE:": "TEXT BOX"
+        {"SPRITE":
+             [{"Text": "It looks like you've searched for a SPRITE contract status change.","NOTE": "CTRS_CODE status (open/sent) first letter should be in CAPITAL","Enter code": "TEXT BOX","Enter CTRS_CODE:": "TEXT BOX"}]
         }
 
 }
@@ -102,8 +100,16 @@ def deleteASAP(input):
             new = []
 
             matchedKeywords = findKeywordMatches(keywords, input)
-            sheet = excelUtil.importExcel(file)
-            headers, formattedSheet = formatExcel.formatSheet(sheet)
+            # MONGODB Data is a list of Dictionaries
+            data = mongoConn.connect()
+            newData = []
+            newData.append(obj.keys())
+            for obj in data:
+                newData.append(obj.values())
+                
+                
+            #sheet = excelUtil.importExcel(file)
+            headers, formattedSheet = formatExcel.formatSheet(newData)
             formattedSheet2 = formatExcel.selectSheetsSimple(headers, formattedSheet, colour)
             for x in Success:
                 if x in input:
@@ -118,8 +124,36 @@ def deleteASAP(input):
             new = []
 
             matchedKeywords = findKeywordMatches(keywords, input)
-            sheet = excelUtil.importExcel(file)
-            headers, formattedSheet = formatExcel.formatSheet(sheet)
+            matchedKeywords = findKeywordMatches(keywords, input)
+            # MONGODB Data is a list of Dictionaries
+            #print ("Here?")
+            data = mongoConn.connect()
+            newData = []
+            temp = list(data[0].keys())
+            counter = 0
+            newTemp = []
+            for x in temp:          
+                if counter == 0 or counter == len(temp)-1:
+                    pass
+                else:
+                    newTemp.append(x)
+                counter +=1                
+            newData.append(newTemp)
+            for obj in data:
+                temp = (list(obj.values()))
+                counter = 0
+                newTemp = []
+                for x in temp:
+                    if counter == 0 or counter == len(temp)-1:
+                        pass
+                    else:
+                        newTemp.append(x)
+                    counter +=1
+                newData.append(newTemp)
+                    
+            #print (newData)
+            #sheet = excelUtil.importExcel(file)
+            headers, formattedSheet = formatExcel.formatSheet(newData)
             formattedSheet2 = formatExcel.selectSheetsSimple(headers, formattedSheet, matchedKeywords)
 
             for x in Success:

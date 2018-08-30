@@ -16,15 +16,15 @@ def formatSheet(sheet):
                 currentApp = row[0]
             else:
                 row[0] = currentApp
-            if row[2] in redSigns:
-                row.append("Red")
-            else:
-                row.append("Green")
+            #if row[2] in redSigns:
+             #   row.append("Red")
+            #else:
+             #   row.append("Green")
             newSheet.append(row)
         counter += 1
 
     # Adding status is for now
-    headers.append("Status")
+    #headers.append("Status")
     return headers,newSheet
 
 def createJsonFromSheet(headers,sheets):

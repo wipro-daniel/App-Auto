@@ -8,7 +8,7 @@ def processInput():
     lines = ''
     # Wait for data to be sent from node module (Which should be taken from angular)
     if test:
-        lines = ["","Proposal 0079815586 Please change proposal and account 76150001 status to Sent as this account needs to be Rejected"]
+        lines = ["","Application that are green"]
     else:
         lines = sys.argv
     
