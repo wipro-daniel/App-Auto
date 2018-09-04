@@ -55,6 +55,19 @@
         {{ this.ticketSbmtStr }}
       </ul>
        </div>
+
+        <!-- use form instead of simple div  then import search service to search-box and then update oracle  -->
+       <div class="search-form mat-elevation-z0" *ngIf="ticketSpecificResult">
+        <div class="suggestion-title">{{ ticketSpecificResult[0]["Text"]}}
+          {{ticketSpecificResult[0]["NOTE"]}}
+           </div>    
+           <div *ngFor='let labels of ticketlabel'>{{ labels }}
+           <input type="text">
+          </div>
+          <input type="button"  class="btn"
+          value="Submit" onSubmit="ticketSubmit()">
+        <!--  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator> -->
+      </div>
   
   </mat-sidenav-content>
 </mat-sidenav-container>

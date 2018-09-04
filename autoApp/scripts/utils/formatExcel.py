@@ -58,6 +58,7 @@ def createJsonFromSheet(headers,sheets):
 
     return (json.dumps(jsonStorage))
 
+# This gives the application name as first in the data
 def createJsonFromSheet2(headers,sheets):
     jsonStorage = []
     currentApplication = ""
@@ -83,6 +84,29 @@ def createJsonFromSheet2(headers,sheets):
     # Then there is only one instance of values
     if sheets != []:
         appDict[currentApplication] = applicationStorage
+
+    #print (appDict)
+    jsonStorage.append(appDict)
+
+    return jsonStorage
+
+def createJsonFromSheet3(headers,sheets):
+    jsonStorage = []
+    currentApplication = ""
+    colour = sheets[0][3].upper()
+    appDict = {}
+    applicationStorage = []
+    counter = 0
+
+    for row in sheets:
+        newDict = {}
+        for header in range(len(headers)):
+            newDict[headers[header]] = row[header]
+        applicationStorage.append(newDict)
+        counter +=1
+    # Then there is only one instance of values
+    if sheets != []:
+        appDict[colour] = applicationStorage
 
     #print (appDict)
     jsonStorage.append(appDict)

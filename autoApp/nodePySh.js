@@ -1,5 +1,6 @@
 var PythonShell = require('python-shell');
 const express = require('express');
+const oracledb=require('oracledb');
 var bodyParser=require('body-parser');
 //const MongoClient=require('mongodb').MongoClient;
 const mongoose=require('mongoose');
@@ -76,6 +77,43 @@ app.post('/dbUpdate',(req,res)=>{
     app.listen(5000, () => {
         console.log('Listening on port 5000');
     })
+
+/* 
+    app.post('/spriteUpdate',(req,res)=>{
+oracledb.getConnection(
+  {
+    user          : "I633530",
+    password      : "npower01",
+    connectString : "(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (COMMUNITY = tcp.world)(PROTOCOL = TCP)(Host = rs827a)(Port = 1525)))(CONNECT_DATA = (SID =  sprid)))"
+  },
+  function(err, connection) {
+    if (err) {
+      console.error(err.message);
+      return;
+    }
+          connection.execute(
+        `SELECT *
+        FROM loggers 
+       WHERE mpan_core =:mpan_core`,
+       [`1419528391000`],
+      function(err, result) {
+        if (err) {
+          console.error(err.message);
+          doRelease(connection);
+          return;
+        }
+        console.log(result.rows);
+        doRelease(connection);
+      });
+  });
+
+function doRelease(connection) {
+  connection.close(
+    function(err) {
+      if (err)
+        console.error(err.message);
+
+    }); */
 
     //     pyshell.send(txt);
     //     pyshell.on('message',function(message){

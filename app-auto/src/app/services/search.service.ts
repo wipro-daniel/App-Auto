@@ -7,7 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SearchService {
 
-  private searchUrl = 'http://localhost:5000/';
+  private searchUrl = 'http://10.176.40.203:5000/';
+  private searchUrlWeb = 'http://10.176.40.203:5000/';
 
   private _result: BehaviorSubject<any[]>;
 
@@ -55,19 +56,10 @@ export class SearchService {
       hcStat:hcStat
      }
      console.log(obj);
-      this._http.post(this.searchUrl+uri,obj)
+      this._http.post(this.searchUrlWeb+uri,obj)
          .subscribe(res=>console.log(res),
         error=>{
           console.log(error);
-        }); 
-
-                
-              /*        .subscribe(data => {
-        this.dataStore.searchResult = <any[]>data;
-        this._result.next(Object.assign({}, this.dataStore).searchResult); 
-        }, error => {
-    //pra    console.log('Failed to fetch results');
-    console.log(error);
-      }) ;*/
+        });  
   }
 }

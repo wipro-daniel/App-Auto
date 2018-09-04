@@ -49,9 +49,8 @@ outputJson = {
          },
     "contract":
         {"SPRITE":
-             [{"Text": "It looks like you've searched for a SPRITE contract status change.","NOTE": "CTRS_CODE status (open/sent) first letter should be in CAPITAL","Enter code": "TEXT BOX","Enter CTRS_CODE:": "TEXT BOX"}]
+             [{"Text": "You have searched for a SPRITE contract status change. CTRS_CODE status (open/sent) first letter should be in CAPITAL","Labels": ["Enter Code","Enter CTRS_CODE:"]}]
         }
-
 }
 
 
@@ -166,7 +165,7 @@ def deleteASAP(input):
             if new == []:
                 new = formattedSheet2
 
-        test = formatExcel.createJsonFromSheet2(headers, new)
+        test = formatExcel.createJsonFromSheet3(headers, new)
         #tempBillit = {}
         #tempBillit['BILLIT'] = test
 

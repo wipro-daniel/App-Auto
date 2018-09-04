@@ -21,6 +21,7 @@ export class SearchBox {
   fullResults: string[];
   searchString = '';
   searchResults: any[];
+  ticketSpecificResult:any[];//this variable is used to hit straight ticket data rather than generic one
   headerKeys: any[];
   hasSearchResults = false;
   searchSpinner = false;
@@ -31,6 +32,7 @@ export class SearchBox {
   selectedResult: any = [];
   selectedAppResult = '';
   ticketSbmtStr='';
+  ticketlabel=[];
 
   dataSource: MatTableDataSource<any[]>;
 
@@ -48,6 +50,7 @@ export class SearchBox {
     this.ticketString = '';
     this.ticketSltVal = true;
     this.ticketSbmtVal = true;
+    this.ticketlabel=[];
 
     if (this.searchString.trim() === '') {
       this.errorMessage = 'Search field cannot be blank';
@@ -63,19 +66,28 @@ export class SearchBox {
         this.ticketString = <any>this.fullResults;
         //this.ticketString=this.fullResults;
         //checking the string whether this is for HC or ticket
-        console.log(this.fullResults);
+        // console.log(this.ticketString);
         if (this.fullResults.length > 0) {
           this.filterSearch();
         }
-        else if (this.ticketString.length > 0) {
+  /*   if (this.ticketString  ) {
+      console.log(`Able to Capture undefined`);
           this.ticketSearch();
-        }
+        }  */
+     this.ticketSearch();
       });
-
   }
 
   ticketSearch() {
-    console.log(`Reached to the ticket function`);
+    //This function is called when ticket data is sent across. Need to corrcet main function so that ticket data is explicitly checked
+ this.ticketSpecificResult = this.ticketString['SPRITE'];
+    if (this.ticketSpecificResult !== undefined){
+      //Object.keys will enumarate the object into array hence it provides then length
+     // console.log(Object.keys(this.ticketSpecificResult).length);
+     //console.log(this.ticketSpecificResult[0]["Labels"]);
+     this.ticketlabel=this.ticketSpecificResult[0]["Labels"]
+    }
+  
   }
 
   buildHeaderKeys(results: any[]): string[] {
@@ -104,7 +116,7 @@ export class SearchBox {
 
   onSelectionChange(idx) {
     this.selectedResult = this.ticketString["Options"][idx]["SELECT"][0];
-    console.log(JSON.stringify(this.selectedResult));
+   //console.log(JSON.stringify(this.selectedResult));
   }
 
   onAppChange(idx) {
@@ -114,12 +126,11 @@ export class SearchBox {
   ticketSubmit() {
  //   this.ticketSbmtVal = true;
  this.ticketSbmtStr='Data processed successfully';
- console.log(`${this.ticketSbmtStr}`)
+// console.log(`${this.ticketSbmtStr}`)
    
   }
 
   filterSearch() {
-
     this.hasSearchResults = false;
     if (this.fullResults.length > 0) {
       let searchArr: string[];
@@ -127,12 +138,15 @@ export class SearchBox {
         this.errorMessage = 'Search field cannot be blank';
         return;
       }
+     // console.log(this.fullResults[0]['GREEN'].length);
+      if (this.fullResults[0]['GREEN'] === undefined){
+      this.searchResults = this.fullResults[0]['RED'];
+    }
+      else  {
+        this.searchResults = this.fullResults[0]['GREEN'];
+      } 
 
-      console.log(this.fullResults);
-
-      this.searchResults = this.fullResults[0]['BILLIT'];
       this.headerKeys = this.buildHeaderKeys(this.searchResults);
-
       this.searchString = '';
       if (this.searchResults && this.searchResults.length > 0) {
         this.dataSource = new MatTableDataSource<any[]>(this.searchResults);
