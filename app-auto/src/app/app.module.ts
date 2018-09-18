@@ -43,7 +43,12 @@ const routes: Routes = [
     // MatRadioChange,
     MatSidenavModule,
     MatToolbarModule,
-    MatCardModule,MatButtonModule
+    MatCardModule,MatButtonModule,
+    /* RouterModule.forRoot([
+      { path: '/hdetails', component: HealthCheckComponent},
+      { path: '', component: AppComponent},
+      { path:'**', redirectTo: ''}
+    ]) */
   ],
   providers: [],
   bootstrap: [AppComponent]

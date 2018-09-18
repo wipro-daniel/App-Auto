@@ -62,4 +62,20 @@ export class SearchService {
           console.log(error);
         });  
   }
+
+  postSprTkt(sprCde:string,sprStsCde:string){
+    const uri='spriteUpdate';
+    const obj={
+      sprCde:sprCde,
+      sprStsCde:sprStsCde
+      }
+     console.log(obj);
+      this._http.post(this.searchUrlWeb+uri,obj)
+         .subscribe(res=>console.log(res),
+        error=>{
+          console.log(error);
+        });  
+
+  }
+
 }

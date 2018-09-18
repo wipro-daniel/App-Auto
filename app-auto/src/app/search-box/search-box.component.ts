@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Sanitizer } from '@angular/core';
-
+import { NgForm } from '@angular/forms'
 import {
   MatTableDataSource,
   MatPaginator,
@@ -89,6 +89,14 @@ export class SearchBox {
     }
   
   }
+//Sprite Ticket for contract status change
+  onSbmtTkt(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    console.log(form.value);
+    this._searchService.postSprTkt(form.value.sprCde,form.value.sprStsCde);
+    }
 
   buildHeaderKeys(results: any[]): string[] {
     let obj: any;

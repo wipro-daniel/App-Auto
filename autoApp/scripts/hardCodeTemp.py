@@ -72,7 +72,7 @@ def deleteASAP(input):
     Address = ["address", "addresses", "addr"]
     MPAN = ["mpan", "mpan amendment"]
     Hedgebook = ["hedgebook", "hedge book"]
-    HealthCheck = ["health check", "health", "check"]
+    HealthCheck = ["health check", "health", "check","healthcheck"]
     Colour = ["red", "green"]
     Failure = ["failed", "failures"]
     Success = ["passed", "completed", "green"]
@@ -83,9 +83,11 @@ def deleteASAP(input):
     contractStatements = excelUtil.importExcel(contractFile)
     if processSentences.searchForContract(input,contractStatements):
         return json.dumps(outputJson["contract"])
+   # Healthy = HealthCheck + Failure + Success
 
     # Then a health check question
     if currentJSONOutput in Colour or currentJSONOutput in HealthCheck:
+        #print ("Here")
         colour = ""
         if currentJSONOutput not in Colour:
             for x in Failure:
@@ -95,7 +97,7 @@ def deleteASAP(input):
                 colour = "green"
 
             currentJSONOutput = colour
-
+            """
             new = []
 
             matchedKeywords = findKeywordMatches(keywords, input)
@@ -119,13 +121,13 @@ def deleteASAP(input):
                             new.append(row)
             if new == []:
                 new = formattedSheet2
-        else:
+                """
+        if True:
             new = []
 
             matchedKeywords = findKeywordMatches(keywords, input)
-            matchedKeywords = findKeywordMatches(keywords, input)
+            matchedKeywords = colour
             # MONGODB Data is a list of Dictionaries
-            #print ("Here?")
             data = mongoConn.connect()
             newData = []
             temp = list(data[0].keys())
@@ -149,6 +151,7 @@ def deleteASAP(input):
                         newTemp.append(x)
                     counter +=1
                 newData.append(newTemp)
+            
                     
             #print (newData)
             #sheet = excelUtil.importExcel(file)
