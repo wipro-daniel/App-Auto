@@ -36,14 +36,7 @@ app.get('/:searchString', (req, res, next) => {
     var txt = req.params.searchString;
     var message = '';
     //console.log(txt);
-    /* res.setHeader('Access-Control-Allow-Origin', '*');
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true); */
+    
     const { spawn } = require('child_process');
     const pythonProcess = spawn('python', ["./autoApp.py", txt]);
     pythonProcess.stdout.on('data', function (data) {
@@ -73,6 +66,12 @@ app.post('/dbUpdate', (req, res) => {
     });
     console.log(post);
 });
+
+//reading HC data  from Mongo, python has already pooled the date from AHC.
+ app.post('/hcdtaPull',(req,res)=>{
+    console.log(`Reading data from ahc collection`);
+//db.getCollection('ahc').find({"Created date":{$gte:new ISODate('2018-10-05 07:27:14.243Z')}})
+ });
 
 app.listen(5000, () => {
     console.log('Listening on port 5000');

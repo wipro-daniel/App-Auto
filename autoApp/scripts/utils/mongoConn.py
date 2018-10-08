@@ -17,3 +17,14 @@ def connect():
      #   print (obj)
     #obj = next(result, None)
     #print (obj)
+
+# Data is reset - Remove after landing page is working
+def fillDB(dbData):
+    client = MongoClient('localhost',27017)
+    # Connect to HCData
+    db = client.Hcdata
+    # Connect to the correct collection
+    collection = db.ahc
+    collection.deleteMany({})
+    #result = collection.insert_one(dbData[0])
+    result = collection.insert_many(dbData)
