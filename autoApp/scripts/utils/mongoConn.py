@@ -25,6 +25,6 @@ def fillDB(dbData):
     db = client.Hcdata
     # Connect to the correct collection
     collection = db.ahc
-    collection.deleteMany({})
+    collection.delete_many({})
     #result = collection.insert_one(dbData[0])
     result = collection.insert_many(dbData)
