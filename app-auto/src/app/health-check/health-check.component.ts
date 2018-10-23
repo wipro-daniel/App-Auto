@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { hcPost } from '../hcpost.model'
 import { SearchService } from '../services/search.service';
 
-
 @Component({
   selector: 'app-health-check',
   templateUrl: './health-check.component.html',

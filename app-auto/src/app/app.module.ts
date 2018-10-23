@@ -17,24 +17,35 @@ import { AppComponent } from './app.component';
 import { SearchHeaderComponent } from './header/search-header.component';
 import { SearchBox } from './search-box/search-box.component';
 import { HealthCheckComponent } from './health-check/health-check.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'search-engine', loadChildren: './search-box/search-box.module#SearchEngineModule' },
-  { path: '**', redirectTo: 'search-engine' }
-]
+  { path: '', redirectTo: '/SearchBox', pathMatch: 'full' },
+  { path: 'SearchBox', component: SearchBox
+/*     children:[
+     {path:'',redirectTo:'SearchBox' ,pathMatch:'full'},
+     {path:}
+
+            ] */
+  },
+  
+
+  { path: '**', redirectTo: 'SearchBox', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchHeaderComponent,
     SearchBox,
-    HealthCheckComponent
+    HealthCheckComponent,
+    DashboardComponent
       ],
 
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    //  RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
     MatInputModule,
