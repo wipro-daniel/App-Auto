@@ -30,20 +30,35 @@ mongoose.connect(uri)
     .catch((error) => {
         console.log(error);
     })
-//console.log('before get');
-//app.get('/search/:searchString', (req, res, next) => {
+
+    app.get('/ahcDb',(req,res,next)=>{
+
+        var txt = req.params.mongoAhc;
+        var message = '';
+        console.log(`in ahcDb`);
+        const { spawn } = require('child_process');
+        const pythonProcess = spawn('python', ["./loadLandingPage.py"]);
+        pythonProcess.stdout.on('data', function (data) {
+           if (data.length > 0) {
+                message += data.toString();
+            }
+        });
+        pythonProcess.stdout.on('end', function () {
+            console.log(message);
+            res.status(200).send(message);
+        });
+    
+    });
+
 app.get('/:searchString', (req, res, next) => {
     var txt = req.params.searchString;
     var message = '';
     //console.log(txt);
-    
-    const { spawn } = require('child_process');
+        const { spawn } = require('child_process');
     const pythonProcess = spawn('python', ["./autoApp.py", txt]);
     pythonProcess.stdout.on('data', function (data) {
-        // console.log(data.toString());
-        // res.writeHead(200, {"Content-Type": "application/json"});
         if (data.length > 0) {
-            message += data.toString();
+          message += data.toString();
         }
     });
     pythonProcess.stdout.on('end', function () {
@@ -51,6 +66,10 @@ app.get('/:searchString', (req, res, next) => {
         res.status(200).send(message);
     });
 });
+
+
+
+
 //Pending to use mongoose save method to update data into db.
 app.post('/dbUpdate', (req, res) => {
     console.log('in Dbupdate');
@@ -72,10 +91,6 @@ app.post('/dbUpdate', (req, res) => {
     console.log(`Reading data from ahc collection`);
 //db.getCollection('ahc').find({"Created date":{$gte:new ISODate('2018-10-05 07:27:14.243Z')}})
  });
-
-app.listen(5000, () => {
-    console.log('Listening on port 5000');
-})
 
 app.post('/spriteUpdate', (req, res) => {
     var sprCde=req.body.sprCde;
@@ -164,3 +179,6 @@ app.post('/spriteUpdate', (req, res) => {
     //    })
 
 
+    app.listen(5000, () => {
+        console.log('Listening on port 5000');
+    })

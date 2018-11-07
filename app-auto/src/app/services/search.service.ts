@@ -7,8 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SearchService {
 
-  private searchUrl = 'http://10.176.40.203:5000/';
-  private searchUrlWeb = 'http://10.176.40.203:5000/';
+  private searchUrl = 'http://localhost:5000/';
+  private searchUrlWeb = 'http://localhost:5000/';
 
   private _result: BehaviorSubject<any[]>;
 

@@ -9,13 +9,15 @@ import { tap} from 'rxjs/operators';
 export class DashboardService {
 
   filePath = 'api/tickets/hcData.JSON';
+  private graphStr='ahcDb';
+  private graphAhc='http://localhost:5000/ahcDb';
 
   constructor(private http: HttpClient) { }
 
   getResults(): Observable<any> {
-   /* console.log('In Dashboard Service');
-   console.log(this.filePath); */
-    return this.http.get(this.filePath).pipe(
+   // console.log('In Dashboard Service');
+   //console.log(this.graphAhc);
+    return this.http.get(this.graphAhc).pipe(
       tap (data => console.log(JSON.stringify(<any>data)))
     );
   }

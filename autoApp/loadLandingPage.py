@@ -3,6 +3,7 @@ import pymongo
 from pymongo import MongoClient
 import matplotlib.pyplot as plt
 import copy
+import json
 
 
 
@@ -20,13 +21,14 @@ def loadData():
 
     #result = collection.find("{'Created date': {'$gte' : new ISODate('2017-07-15 07:27:41.497Z'}}")
     query = {'Created date' : {'$gte': now}}
-    result = collection.find(query)
-    pieData = copy.deepcopy(result)
-    createCharts(pieData)
+    query2 = {'_id':0,'Application name':1, 'Agent name':1,'Script name':1,'Output':1,'Raw Output':1,'Status':1,'Result':1,'Result Colour':1}
+    result = collection.find(query,query2)
+    #pieData = copy.deepcopy(result)
+    #createCharts(pieData)
     parseToNode = []
     for row in result:
         parseToNode.append(row)
-    #print (parseToNode)
+    print (json.dumps(parseToNode))
 
     
 

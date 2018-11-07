@@ -1,4 +1,16 @@
-<div *ngIf="chart" class="chart-container" 
-style="position: relative; height:20vh; width:40vw">
-  <canvas id="pie">{{ chart }}</canvas>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngIf="chart" class="chart-container">
+        <canvas id="pie" style="position: relative; height:20vh; width:40vw;">{{ chart }}</canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="redChart" class="chart-container">
+        <canvas id="redPie" style="position: relative; height:20vh; width:40vw;">{{ redChart }}</canvas>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!---->
