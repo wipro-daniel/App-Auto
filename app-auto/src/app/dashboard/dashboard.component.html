@@ -1,16 +1,17 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row chart-container">
     <div class="col-md-6">
       <div *ngIf="chart" class="chart-container">
-        <canvas id="pie" style="position: relative; height:20vh; width:40vw;">{{ chart }}</canvas>
+        <canvas id="pie" style= "height:20vh; width:40vw;">{{ chart }}</canvas>
       </div>
+   <!--    <p> Hello World!</p> -->
     </div>
     <div class="col-md-6">
       <div *ngIf="redChart" class="chart-container">
-        <canvas id="redPie" style="position: relative; height:20vh; width:40vw;">{{ redChart }}</canvas>
+        <canvas id="redPie" style="height:30vh; width:60vw;">{{ redChart }}</canvas>
       </div>
+    <!--   <p>Hello World 2!</p> -->
     </div>
   </div>
 </div>
-
-<!---->
+<!--  -->

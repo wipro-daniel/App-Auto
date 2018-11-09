@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   tickets: any;
   chart = [];
-  redChart=[];
+  redChart = [];
 
   constructor(private dashboardService: DashboardService) { }
 
@@ -21,11 +21,11 @@ export class DashboardComponent implements OnInit {
         this.tickets = <any>tickets;
         let redTickets = [];
         let greenTickets = [];
-//prav-s
-        let hcFailedApp=[];
-        let hcFailedAppCount=[];
-        let hcBackgroundColor=[];
-//prav-e
+        //prav-s
+        let hcFailedApp = [];
+        let hcFailedAppCount = [];
+        let hcBackgroundColor = [];
+        //prav-e
         let redTicketsCount = 0;
         let greenTicketsCount = 0;
 
@@ -34,26 +34,26 @@ export class DashboardComponent implements OnInit {
 
         redTickets = tickets.filter(ticket => ticket['Result Colour'] === 'R');
         greenTickets = tickets.filter(ticket => ticket['Result Colour'] === 'G');
-//prav-s
-      
+        //prav-s
+
         redTickets.forEach(redTicket => {
           if (hcFailedApp.indexOf(redTicket['Application name']) >= 0) {
             return;
           }
 
-          const appCount = redTickets.filter(ticket => 
-              ticket['Application name'] === redTicket['Application name']);
+          const appCount = redTickets.filter(ticket =>
+            ticket['Application name'] === redTicket['Application name']);
           hcFailedApp.push(redTicket['Application name']);
           hcFailedAppCount.push(appCount.length);
-          hcBackgroundColor.push('#'+(0x1000000+(Math.random())*0xffffff)
-                            .toString(16).substr(1,6));
+          hcBackgroundColor.push('#' + (0x1000000 + (Math.random()) * 0xffffff)
+            .toString(16).substr(1, 6));
         });
 
         console.log(hcFailedApp);
         console.log(hcFailedAppCount);
         console.log(hcBackgroundColor);
-        
-  //prav-e
+
+        //prav-e
         redTicketsCount = redTickets.length;
         greenTicketsCount = greenTickets.length;
 
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
             backgroundColor: hcBackgroundColor
           }],
 
-       //   labels: hcFailedApp
+          labels: hcFailedApp
         };
 
         this.chart = new Chart('pie', {
@@ -97,14 +97,33 @@ export class DashboardComponent implements OnInit {
           options: {
             responsive: true,
             maintainAspectRatio: false,
-          }       
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: "Health Check",
+              position: "bottom",
+              fontSize: 16
+            }
+          }
         });
-        this.redChart=new Chart('redPie',{
-          type:'pie',
-          data:redData,
-          options:{
-            responsive:true,
-            maintainAspectRatio:false,
+
+        this.redChart = new Chart('redPie', {
+          type: 'pie',
+          data: redData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+            title: {
+              display: true,
+              text: "Applications that need help!",
+              position: "bottom",
+              fontSize: 16
+            }
           }
         });
       });

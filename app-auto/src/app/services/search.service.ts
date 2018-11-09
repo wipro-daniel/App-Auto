@@ -41,7 +41,7 @@ export class SearchService {
         this._result.next(Object.assign({}, this.dataStore).searchResult);
       }, error => {
     //pra    console.log('Failed to fetch results');
-    console.log(error);
+  //  console.log(error);
       });
   }
 
