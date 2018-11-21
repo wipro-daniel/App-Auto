@@ -23,7 +23,7 @@
       </mat-error>
       <!-- <mat-error *ngIf="postForm.getControl('content').invalid">Please enter a post title
                   </mat-error> -->
-   <!--  </mat-form-field>
+<!--  </mat-form-field>
 
     <mat-form-field appearance="outline">
       <input matInput type="text" placeholder="Enter HC Status" name="hcStatus" ngModel required #hcStatus="ngModel">
@@ -34,6 +34,21 @@
 
     <button mat-raised-button color="primary" type="Submit">Save Post</button>
   </form>
-</mat-card> --> 
+</mat-card> -->
+<!-- <p>Totally new view will be developed </p> -->
+<button mat-raised-button color="primary" (click)="toAddData()">Enter HC Details</button>
 
-<p>Totally new view will be developed </p>
+<div *ngIf="hcFailedAppSumm.length>0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="cols">
+          <div class="col-sm-6" *ngFor="let app of hcFailedAppSumm;">
+              <button mat-raised-button color="accent">{{ app }}
+        </button>
+      </div>
+     </div>
+    </div>
+  </div>
+</div>
+<!--  <button mat-raised-button color="primary" >SPRITE</button>
+</div> -->

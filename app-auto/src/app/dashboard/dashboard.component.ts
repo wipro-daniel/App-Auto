@@ -49,9 +49,9 @@ export class DashboardComponent implements OnInit {
             .toString(16).substr(1, 6));
         });
 
-        console.log(hcFailedApp);
+     /*    console.log(hcFailedApp);
         console.log(hcFailedAppCount);
-        console.log(hcBackgroundColor);
+        console.log(hcBackgroundColor); */
 
         //prav-e
         redTicketsCount = redTickets.length;
