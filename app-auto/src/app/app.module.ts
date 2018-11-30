@@ -18,6 +18,7 @@ import { SearchHeaderComponent } from './header/search-header.component';
 import { SearchBox } from './search-box/search-box.component';
 import { HealthCheckComponent } from './health-check/health-check.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PairsPipe } from './health-check/health-check.pipe';
 
 const routes: Routes = [
   { path: '', redirectTo: '/SearchBox', pathMatch: 'full' },
@@ -39,7 +40,8 @@ const routes: Routes = [
     SearchHeaderComponent,
     SearchBox,
     HealthCheckComponent,
-    DashboardComponent
+    DashboardComponent,
+    PairsPipe
       ],
 
   imports: [

@@ -36,17 +36,27 @@
   </form>
 </mat-card> -->
 <!-- <p>Totally new view will be developed </p> -->
-<button mat-raised-button color="primary" (click)="toAddData()">Enter HC Details</button>
-
-<div *ngIf="hcFailedAppSumm.length>0">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="cols">
-          <div class="col-sm-6" *ngFor="let app of hcFailedAppSumm;">
-              <button mat-raised-button color="accent">{{ app }}
-        </button>
+<div class="container">
+  <div class="row">
+    <div class="col p">
+      <button mat-raised-button color="primary" 
+        (click)="toAddData()">Enter HC Details</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="hcFailedAppSumm.length>0">
+    <div class="container">
+      <div class="row" *ngFor="let app of hcFailedAppSumm | pairs">
+        <div class="col-lg-6 p">
+          <button mat-raised-button color="accent" 
+            (click)="getHcData(app[0])">{{ app[0] }}
+                    </button>
+        </div>
+        <div class="col-lg-6 p">
+          <button mat-raised-button color="accent" 
+            (click)="getHcData(app[1])">{{ app[1] }}
+          </button>
+        </div>
       </div>
-     </div>
     </div>
   </div>
 </div>

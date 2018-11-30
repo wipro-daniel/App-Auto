@@ -1,12 +1,30 @@
-<search-header></search-header>
-<!-- <main>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <search-header></search-header>
+    </div>
+  </div>
+  <!-- <main>
     <search-box></search-box>
     <app-dashboard></app-dashboard>
  
 </main> -->
-<router-outlet></router-outlet>
-<!----
+  <div class="row">
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!----
   <!--  adding another button  to have chart functionality  
 <app-health-check [hidden]="!isOn"></app-health-check> -->
-<app-dashboard></app-dashboard>
-<app-health-check></app-health-check>
+  <div class="row">
+    <div class="col">
+      <app-dashboard></app-dashboard>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-health-check></app-health-check>
+    </div>
+  </div>
+</div>

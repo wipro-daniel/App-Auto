@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { hcPost } from '../hcpost.model'
 import { SearchService } from '../services/search.service';
 import { DashboardService } from '../services/dasboard/dashboard.service';
+import { $ } from 'protractor';
 
 
 @Component({
@@ -45,6 +46,10 @@ export class HealthCheckComponent {
       //  console.log(this.hcFailedAppSumm);
       });
 
+      }
+
+      getHcData(appName:string){
+        console.log(appName);
       }
 
   onAddPost(form: NgForm) {
