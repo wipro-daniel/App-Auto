@@ -8,10 +8,11 @@ set http_proxy=http://srv_wipro_automation:Wi_2017\!_pro@proxy.rwe.com:8080
 
 
 
-Application: "BILLIT", "Health Check ": "Check if PDSM0047 completed", Result: "Not Completed", …
+Application: "BILLIT", "Health Check ": "Check if PDSM0047 completed", Result: "Not Completed", â€¦
 
 
 
+http://10.174.13.66:4200/search-engine/search
 
 
 i have an amendment ticket	
